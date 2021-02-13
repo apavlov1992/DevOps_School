@@ -13,13 +13,11 @@
         state: started
         enabled: yes
 
-
     - name: Create file with content
       copy:
         content:
           Welcome to my web server
         dest: "{{ index_path }}"
-
 
     - name: Open port on firewalld
       firewalld:

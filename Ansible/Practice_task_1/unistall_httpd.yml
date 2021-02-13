@@ -18,7 +18,6 @@
         state: absent
         path: "{{ index_path }}"
 
-
     - name: Close port on firewalld
       firewalld:
         port: "{{ firewall_port }}"
