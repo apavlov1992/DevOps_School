@@ -1,0 +1,26 @@
+---
+- hosts: dev-apavlov.spb.yadro.com
+
+  tasks:
+    - name: Stop and disable httpd
+      service:
+        name: httpd
+        state: stopped
+        enabled: no
+
+    - name: Uninstall httpd
+      yum:
+        name: httpd
+        state: removed
+
+    - name: Delete file with content
+      file:
+        state: absent
+        path: "{{ index_path }}"
+
+
+    - name: Close port on firewalld
+      firewalld:
+        port: "{{ firewall_port }}"
+        permanent: true
+        state: disabled

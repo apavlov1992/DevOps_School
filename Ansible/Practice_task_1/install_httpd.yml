@@ -1,0 +1,47 @@
+---
+- hosts: dev-apavlov.spb.yadro.com
+
+  tasks:
+    - name: Install httpd
+      yum:
+        name: httpd
+        state: latest
+
+    - name: Start and enable httpd
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+
+    - name: Create file with content
+      copy:
+        content:
+          Welcome to my web server
+        dest: "{{ index_path }}"
+
+
+    - name: Open port on firewalld
+      firewalld:
+        port: "{{ firewall_port }}"
+        permanent: true
+        state: enabled
+
+    - name: Disable NetworkManager
+      service:
+        name: NetworkManager
+        state: stopped
+        enabled: no
+
+    - name: Change grub cobnfig
+      lineinfile:
+        path: /etc/default/grub
+        regexp: '^GRUB_CMDLINE_LINUX='
+        line: 'GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"'
+      notify:
+        - reconfigure_grub
+
+
+  handlers:
+      - name: reconfigure_grub
+        shell: "grub2-mkconfig -o /boot/grub2/grub.cfg"
