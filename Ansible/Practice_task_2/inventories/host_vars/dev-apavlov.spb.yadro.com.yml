@@ -1,2 +1,6 @@
 firewall_port: "8080/tcp"
 index_path: "/var/www/html/index.html"
+ftp_port: "21/tcp"
+anonymous_enable: "YES"
+anon_upload_enable: "YES"
+

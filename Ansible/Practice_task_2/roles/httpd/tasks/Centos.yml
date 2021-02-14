@@ -4,11 +4,13 @@
     state: latest
   notify: restart_httpd
 
+
 - name: Create file with content
   copy:
     content:
       Welcome to my web server
     dest: "{{ index_path }}"
+
 
 - name: Open port on firewalld
   firewalld:
