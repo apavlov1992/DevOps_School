@@ -1,0 +1,6 @@
+- name: Install vsftpd for Centos
+  yum:
+    name: vsftpd
+    state: latest
+  notify: restart_vsftpd
+

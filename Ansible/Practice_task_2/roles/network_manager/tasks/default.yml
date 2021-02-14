@@ -1,0 +1,3 @@
+- name: Die if OS not found
+  fail:
+    msg: "Cannot found specific OS"

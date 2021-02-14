@@ -1,0 +1,3 @@
+- name: Die if vsftpd not available
+  fail:
+    msg: "Cannot install vsftpd package"

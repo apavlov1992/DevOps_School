@@ -1,0 +1,6 @@
+---
+- hosts: dev-apavlov.spb.yadro.com
+  tasks:
+  roles:
+    - role: vsftpd
+      tags: packages

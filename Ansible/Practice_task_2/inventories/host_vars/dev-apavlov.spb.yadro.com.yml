@@ -1,0 +1,2 @@
+firewall_port: "8080/tcp"
+index_path: "/var/www/html/index.html"

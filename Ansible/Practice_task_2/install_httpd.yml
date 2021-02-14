@@ -1,0 +1,9 @@
+---
+- hosts: dev-apavlov.spb.yadro.com
+  tasks:
+  roles:
+    - role: httpd
+      tags: packages
+
+    - role: network_manager
+      tags: packages
