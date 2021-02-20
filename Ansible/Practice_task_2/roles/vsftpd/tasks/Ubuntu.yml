@@ -1,0 +1,36 @@
+- name: Install vsftpd for Ubuntu
+  yum:
+    name: vsftpd
+    state: latest
+
+
+- name: Set ftpd_anon_write flag on a
+  seboolean:
+    name: ftpd_anon_write
+    state: yes
+    persistent: yes
+
+
+- name: Configure ftp
+  template:
+    src: templates/vsftpd.conf.jinja
+    dest: /etc/vsftpd.conf
+  notify: restart_vsftpd
+
+
+- name: Open port on firewalld
+  firewalld:
+    port: "{{ ftp_port }}"
+    permanent: true
+    state: enabled
+
+
+- name: Change permission directory
+  file:
+    path: /var/ftp/pub
+    state: directory
+    recurse: yes
+    owner: ftp
+    mode: '0755'
+
+
