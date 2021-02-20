@@ -1,6 +1,14 @@
 ---
 - hosts: dev-apavlov.spb.yadro.com
-  gather_facts: yes
+
+  pre_tasks:
+
+    - name: Gather minimal facts
+      setup:
+        gather_subset: "!all,min"
+      tags:
+        - always
+
   tasks:
   roles:
     - role: httpd
