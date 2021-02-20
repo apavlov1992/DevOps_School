@@ -1,5 +1,5 @@
 ---
-- hosts: dev-apavlov.spb.yadro.com
+- hosts: all
   tasks:
   roles:
     - role: httpd
