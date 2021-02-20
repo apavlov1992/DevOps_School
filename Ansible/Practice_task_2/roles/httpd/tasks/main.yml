@@ -1,4 +1,10 @@
 ---
+- name: Gather minimal facts
+  setup:
+    gather_subset: "!all,min"
+  tags:
+    - always
+
 - name: Include appropriate tasks for OS family and version
   include_tasks: "{{ os_specific_tasks }}"
   with_first_found:
