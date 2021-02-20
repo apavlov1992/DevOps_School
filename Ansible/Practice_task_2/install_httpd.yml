@@ -1,5 +1,6 @@
 ---
 - hosts: dev-apavlov.spb.yadro.com
+  gather_facts: yes
   tasks:
   roles:
     - role: httpd
