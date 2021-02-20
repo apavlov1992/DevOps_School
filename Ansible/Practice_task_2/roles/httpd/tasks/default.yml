@@ -1,3 +1,8 @@
+- name: Check OS version
+  shell: cat /etc/redhat-release | grep -o '[0-9]' | awk 'NR == 1'
+  register: os_version
+- debug:
+    var: os_version.stdout
 - name: Die if httpd not available
   fail:
     msg: "Cannot install httpd package"
