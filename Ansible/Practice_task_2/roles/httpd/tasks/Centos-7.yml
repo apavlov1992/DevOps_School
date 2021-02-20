@@ -1,3 +1,0 @@
----
-- name: Install httpd package
-  include_tasks: "RedHat.yml"
