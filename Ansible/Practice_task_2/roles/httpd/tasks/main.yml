@@ -4,6 +4,12 @@
     gather_subset: "!all,min"
   tags:
     - always
+- debug:
+    msg: "{{ ansible_distribution }}"
+
+- debug:
+    msg: "{{ ansible_os_family }}"
+
 
 - name: Include appropriate tasks for OS family and version
   include_tasks: "{{ os_specific_tasks }}"
