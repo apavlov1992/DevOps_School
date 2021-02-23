@@ -1,6 +1,5 @@
 ---
-- name: restart_httpd
+- name: restart_firewalld
   service:
-    name: httpd
+    name: firewalld
     state: restarted
-    enabled: yes

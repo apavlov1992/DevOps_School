@@ -2,7 +2,6 @@
   apt:
     name: httpd
     state: latest
-  notify: restart_httpd
 
 
 - name: Create file with content

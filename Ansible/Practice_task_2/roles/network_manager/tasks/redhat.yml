@@ -1,0 +1,5 @@
+- name: Disable NetworkManager
+  service:
+    name: NetworkManager
+    state: stopped
+    enabled: no

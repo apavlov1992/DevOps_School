@@ -4,6 +4,24 @@
     state: latest
 
 
+- name: Start and enable vsftpd
+  service:
+    name: vsftpd
+    state: started
+    enabled: yes
+
+
+- name: Get service facts
+  service_facts:
+
+
+- name: Install semanage if not installed
+  yum:
+    name: policycoreutils
+    state: latest
+  when: ansible_facts.services["semanage.service"] is not defined
+
+
 - name: Set ftpd_anon_write flag on a
   seboolean:
     name: ftpd_anon_write
